@@ -30,4 +30,6 @@ ActiveRecord::Schema.define(version: 20210219194149) do
     t.datetime "updated_at"
   end
 
+  add_index "projects", ["title"], name: "index_projects_on_title", unique: true
+
 end
