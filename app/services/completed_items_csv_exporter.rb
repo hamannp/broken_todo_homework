@@ -4,7 +4,7 @@ class CompletedItemsCsvExporter
   def initialize(items: Item.complete, io_out: STDOUT)
     @items = items
     @io_out = io_out
-    @header = ['Project Title', 'Action', 'Date Completed']
+    @header = ['Project Title', 'Action', 'Date Completed', 'Date Added']
   end
 
   def export!
@@ -12,7 +12,7 @@ class CompletedItemsCsvExporter
       csv << header
 
       items.each do |item|
-        csv << [item.project_title, item.action, item.updated_at.to_date]
+        csv << [item.project_title, item.action, item.updated_at.to_date, item.created_at.to_date]
       end
     end
   end
