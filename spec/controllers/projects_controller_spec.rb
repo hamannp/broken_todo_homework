@@ -155,6 +155,12 @@ RSpec.describe ProjectsController, :type => :controller do
       expect(assigns(:project)).to eq(project)
     end
 
+    it 'informs the user when there are no completed items to destroy' do
+      delete :clear, { :id => project.to_param }
+      expect(assigns(:project)).to eq(project)
+      expect(flash[:notice]).to match(/There are no completed items for this project\./)
+    end
+
     it 'does not destroy incomplete items' do
       delete :clear, { :id => project.to_param }
       expect(project.items.count).to eq(1)
@@ -164,6 +170,7 @@ RSpec.describe ProjectsController, :type => :controller do
       project.items.first.update(:done => true)
       delete :clear, { :id => project.to_param }
       expect(project.reload.items.count).to eq(0)
+      expect(flash[:notice]).to match(/Completed items were successfully cleared\./)
     end
   end
 end
