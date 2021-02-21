@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = @project.items.where("id = #{params[:id]}").first
+    @item = @project.items.find(params[:id])
 
     respond_to do |format|
       if @item.update(item_params)
