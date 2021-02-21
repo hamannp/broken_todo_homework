@@ -6,13 +6,13 @@ RSpec.describe Item, :type => :model do
   let(:params) {
     {
       :action => 'Do something',
-      :project_id => 123,
+      :project => FactoryBot.build(:project)
     }
   }
 
   describe '#project_title' do
     let(:project_title) { 'Some Project Title' }
-    let(:project) { Project.new(:title => project_title).freeze }
+    let(:project) { FactoryBot.build(:project, title: project_title) }
     let(:params) do
       { :action => 'Do something',
         :project => project }

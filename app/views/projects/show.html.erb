@@ -1,2 +1,2 @@
 <h2><%= link_to @project.title, edit_project_path(@project) %> Items</h2>
-<%= render :partial => 'items/index', :locals => { :project => @project } %>
+<%= render :partial => 'items/display_list', :locals => { :project => @project } %>
