@@ -18,4 +18,8 @@ class Item < ActiveRecord::Base
   # there are only 2 possible values
   scope :complete, -> { where(done: true) }
 
+  def complete?
+    done
+  end
+
 end

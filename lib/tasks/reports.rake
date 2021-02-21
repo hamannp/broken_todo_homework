@@ -4,5 +4,10 @@ namespace :todo do
     task :csv => :environment do
       CompletedItemsCsvExporter.new.export!
     end
+
+    desc 'Print a report to STDOUT'
+    task :print => :environment do
+      ProjectItemsReporter.new.call
+    end
   end
 end
