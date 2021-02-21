@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Item, :type => :model do
+  include_examples 'soft delete examples', 'item'
+
   subject { Item.new(params) }
 
   let(:params) {

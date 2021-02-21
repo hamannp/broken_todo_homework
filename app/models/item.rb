@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  include SoftDelete
 
   # The original wrapper method was fine, but this alternative was the standard
   # in my last shop.  I would follow whatever was the standard at Cofense.

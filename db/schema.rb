@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20210219194149) do
     t.boolean  "done",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "items", ["deleted_at"], name: "index_items_on_deleted_at"
   add_index "items", ["project_id", "action"], name: "index_items_on_project_id_and_action", unique: true
   add_index "items", ["project_id"], name: "index_items_on_project_id"
 
@@ -28,8 +30,10 @@ ActiveRecord::Schema.define(version: 20210219194149) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
+  add_index "projects", ["deleted_at"], name: "index_projects_on_deleted_at"
   add_index "projects", ["title"], name: "index_projects_on_title", unique: true
 
 end
